@@ -1,8 +1,13 @@
 <view class="container">
-  <view wx:if="{{history.length === 0}}" class="empty">暂无历史记录，先开始一次模拟面试。</view>
+  <view class="card hero-card history-head">
+    <view class="title">历史复盘档案</view>
+    <view class="subtitle">按场次查看分数走势和二答进步值，持续追踪上岸节奏。</view>
+  </view>
+
+  <view wx:if="{{history.length === 0}}" class="empty">暂无历史记录，先开始一次模拟训练。</view>
 
   <view wx:else>
-    <view class="card" wx:for="{{history}}" wx:key="id" bindtap="openResult" data-id="{{item.id}}">
+    <view class="card history-card" wx:for="{{history}}" wx:key="id" bindtap="openResult" data-id="{{item.id}}">
       <view class="inline-row">
         <view>
           <view class="record-role">{{item.roleLabel}} · {{item.levelLabel}}</view>

@@ -1,80 +1,106 @@
 page {
-  background: #f8fafc;
-  color: #0f172a;
+  background: radial-gradient(circle at 0% -10%, #ffedd5 0%, #fffaf4 38%, #f8fbff 100%);
+  color: #1f2937;
   font-size: 28rpx;
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
 }
 
 .container {
-  padding: 28rpx;
+  padding: 26rpx 24rpx 36rpx;
 }
 
 .card {
   background: #ffffff;
-  border-radius: 18rpx;
+  border-radius: 28rpx;
   padding: 24rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 8rpx 30rpx rgba(15, 23, 42, 0.06);
+  margin-bottom: 18rpx;
+  border: 1rpx solid #ffe5d0;
+  box-shadow: 0 14rpx 36rpx rgba(154, 52, 18, 0.08);
+}
+
+.hero-card {
+  background: linear-gradient(135deg, #fff7ed 0%, #fff2e2 45%, #ecfeff 100%);
+  border: 1rpx solid #fed7aa;
 }
 
 .title {
-  font-size: 36rpx;
+  font-size: 38rpx;
   font-weight: 700;
+  color: #7c2d12;
 }
 
 .subtitle {
-  color: #475569;
-  margin-top: 12rpx;
+  color: #7c5e49;
+  margin-top: 10rpx;
   line-height: 1.6;
+  font-size: 26rpx;
+}
+
+.section-title {
+  color: #9a3412;
+  font-weight: 700;
+  margin-bottom: 12rpx;
+  font-size: 28rpx;
 }
 
 .label {
-  color: #334155;
+  color: #9a3412;
   margin-bottom: 10rpx;
   display: block;
-}
-
-.value {
-  color: #0f172a;
   font-weight: 600;
 }
 
+.value {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+button::after {
+  border: none;
+}
+
 .btn-primary {
-  background: #0f766e;
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
   color: #ffffff;
-  border-radius: 14rpx;
-  margin-top: 20rpx;
+  border-radius: 18rpx;
+  margin-top: 18rpx;
+  box-shadow: 0 10rpx 24rpx rgba(234, 88, 12, 0.28);
+  font-weight: 700;
 }
 
 .btn-secondary {
-  background: #e2e8f0;
-  color: #0f172a;
-  border-radius: 14rpx;
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1rpx solid #fdba74;
+  border-radius: 18rpx;
   margin-top: 12rpx;
+  font-weight: 600;
 }
 
 .inline-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16rpx;
+  gap: 14rpx;
 }
 
 .tag {
-  background: #ecfeff;
-  color: #0f766e;
+  background: #fff7ed;
+  color: #c2410c;
   border-radius: 999rpx;
   padding: 6rpx 18rpx;
   font-size: 24rpx;
+  border: 1rpx solid #fdba74;
 }
 
 .score-big {
   font-size: 72rpx;
   font-weight: 700;
-  color: #0f766e;
+  color: #ea580c;
 }
 
 .empty {
   text-align: center;
   color: #64748b;
-  padding: 80rpx 20rpx;
+  padding: 90rpx 20rpx;
 }

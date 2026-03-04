@@ -1,28 +1,56 @@
 <view class="container">
-  <view class="card">
-    <view class="title">模拟面试 MVP</view>
-    <view class="subtitle">基于需求文档改造：日常模式固定 2 题，每题完成一答 + 二答。</view>
+  <view class="card hero-card">
+    <view class="hero-head inline-row">
+      <view>
+        <view class="title">上岸冲刺训练营</view>
+        <view class="subtitle">公务员面试专版：江苏省考 / 事业编 / 选调生三赛道题库。</view>
+      </view>
+      <view class="hero-mark">MVP</view>
+    </view>
+    <view class="hero-chip-row">
+      <view class="hero-chip">每日 2 题</view>
+      <view class="hero-chip">一答 + 二答</view>
+      <view class="hero-chip">即时复盘</view>
+    </view>
   </view>
 
   <view class="card">
-    <view class="label">目标岗位</view>
-    <picker mode="selector" range="{{roleLabels}}" value="{{roleIndex}}" bindchange="onRoleChange">
-      <view class="picker-value">{{roleLabels[roleIndex]}}</view>
-    </picker>
+    <view class="section-title">选择考试赛道</view>
+    <view class="option-list">
+      <view
+        wx:for="{{roleOptions}}"
+        wx:key="value"
+        data-index="{{index}}"
+        bindtap="onRoleSelect"
+        class="option-item {{roleIndex === index ? 'active' : ''}}"
+      >
+        <view class="option-title">{{item.label}}</view>
+        <view class="option-desc">{{roleDescMap[item.value]}}</view>
+      </view>
+    </view>
 
-    <view class="label field-gap">难度等级</view>
-    <picker mode="selector" range="{{levelLabels}}" value="{{levelIndex}}" bindchange="onLevelChange">
-      <view class="picker-value">{{levelLabels[levelIndex]}}</view>
-    </picker>
+    <view class="section-title section-gap">选择训练阶段</view>
+    <view class="option-list">
+      <view
+        wx:for="{{levelOptions}}"
+        wx:key="value"
+        data-index="{{index}}"
+        bindtap="onLevelSelect"
+        class="option-item {{levelIndex === index ? 'active' : ''}}"
+      >
+        <view class="option-title">{{item.label}}</view>
+        <view class="option-desc">{{levelDescMap[item.value]}}</view>
+      </view>
+    </view>
 
     <view class="training-note">
       <view class="training-note-title">今日训练配置</view>
-      <view class="training-note-item">- 每日 2 题（固定）</view>
-      <view class="training-note-item">- 每题先一答，再根据反馈完成二答</view>
-      <view class="training-note-item">- 报告输出最该改3点 + 6维雷达 + 二答进步值</view>
+      <view class="training-note-item">- 固定 {{questionCount}} 题，按真实面试节奏推进</view>
+      <view class="training-note-item">- 每题先一答，再按反馈做专项二答</view>
+      <view class="training-note-item">- 输出最该改3点、6维能力图与进步值</view>
     </view>
 
-    <button class="btn-primary" bindtap="startInterview">开始模拟</button>
-    <button class="btn-secondary" bindtap="toHistory">查看历史记录</button>
+    <button class="btn-primary" bindtap="startInterview">开始今日训练</button>
+    <button class="btn-secondary" bindtap="toHistory">查看历史复盘</button>
   </view>
 </view>

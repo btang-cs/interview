@@ -1,45 +1,65 @@
 <view class="container">
-  <view class="card">
+  <view class="card hero-card interview-head">
     <view class="inline-row">
-      <view class="tag">{{roleLabel}} · {{levelLabel}}</view>
-      <view class="timer">剩余 {{remainingSeconds}}s</view>
+      <view class="track-pill">{{roleLabel}} · {{levelLabel}}</view>
+      <view class="clock-pill">{{remainingSeconds}}s</view>
     </view>
-    <view class="progress">第 {{currentIndex + 1}} / {{questionCount}} 题 · 当前{{phaseLabel}}</view>
+
+    <view class="inline-row phase-row">
+      <view class="phase-title">第 {{currentIndex + 1}} / {{questionCount}} 题 · 当前{{phaseLabel}}</view>
+      <view class="phase-percent">{{progressPercent}}%</view>
+    </view>
+    <view class="meter">
+      <view class="meter-fill" style="width: {{progressPercent}}%;"></view>
+    </view>
+
+    <view class="inline-row phase-row timer-row">
+      <view class="timer-label">本题倒计时</view>
+      <view class="phase-percent">{{timerPercent}}%</view>
+    </view>
+    <view class="meter meter-time">
+      <view class="meter-fill meter-time-fill" style="width: {{timerPercent}}%;"></view>
+    </view>
   </view>
 
-  <view class="card">
-    <view class="question-title">题目（{{currentQuestion.questionType || '通用'}}）</view>
+  <view class="card question-card">
+    <view class="question-head inline-row">
+      <view class="question-title">当前题目</view>
+      <view class="question-type">{{currentQuestion.questionType || '通用'}}</view>
+    </view>
     <view class="question-text">{{currentQuestion.prompt}}</view>
   </view>
 
   <view class="card" wx:if="{{phase === 'first'}}">
-    <view class="question-title">一答（先给出你的原始回答）</view>
+    <view class="question-title">一答（先输出你的原始思路）</view>
     <textarea
       class="answer-input"
-      placeholder="建议至少 80 字：结论 + 要点 + 可执行动作"
+      placeholder="建议 80-180 字，先结论后展开，尽量有场景动作。"
       value="{{answer}}"
       maxlength="1600"
       bindinput="onAnswerInput"
     />
     <button class="btn-primary" bindtap="submitCurrent" loading="{{isSubmitting}}">
-      提交一答并查看反馈
+      提交一答并获取诊断
     </button>
   </view>
 
   <view wx:if="{{phase === 'second'}}">
-    <view class="card">
-      <view class="question-title">一答反馈（可解释）</view>
-      <view class="feedback-score">一答得分：{{firstFeedback.score}}</view>
+    <view class="card feedback-card">
+      <view class="feedback-head inline-row">
+        <view class="question-title">一答诊断</view>
+        <view class="feedback-score">{{firstFeedback.score}} 分</view>
+      </view>
       <view class="feedback-line">{{firstFeedback.coverageText}}</view>
       <view class="feedback-line" wx:for="{{firstFeedback.taskBreakdown}}" wx:key="*this">- {{item}}</view>
 
-      <view class="sub-title">最该先改</view>
+      <view class="sub-title">优先修正项</view>
       <view class="feedback-line" wx:for="{{firstFeedback.suggestions}}" wx:key="*this">• {{item}}</view>
 
       <view class="sub-title" wx:if="{{firstFeedback.offTopicSentences.length > 0}}">疑似跑题句</view>
       <view class="feedback-line warning" wx:for="{{firstFeedback.offTopicSentences}}" wx:key="*this">“{{item}}”</view>
 
-      <view class="sub-title">缺失要点补充模板</view>
+      <view class="sub-title">补充模板</view>
       <view class="feedback-line" wx:for="{{firstFeedback.missingPointTemplates}}" wx:key="point">
         - {{item.point}}：{{item.template}}
       </view>
@@ -49,7 +69,7 @@
     </view>
 
     <view class="card">
-      <view class="question-title">二答训练模式（三选一）</view>
+      <view class="question-title">二答专项模式</view>
       <view class="mode-row">
         <view
           wx:for="{{secondModeOptions}}"
@@ -65,7 +85,7 @@
 
       <textarea
         class="answer-input"
-        placeholder="根据上方反馈完成二答（建议 100 字以上）"
+        placeholder="按上方专项模式完成二答，建议 100 字以上。"
         value="{{answer}}"
         maxlength="1800"
         bindinput="onAnswerInput"

@@ -1,34 +1,43 @@
 <view class="container" wx:if="{{result}}">
-  <view class="card">
+  <view class="card hero-card result-hero">
     <view class="inline-row">
       <view>
-        <view class="title">{{result.roleLabel}} · {{result.levelLabel}}</view>
-        <view class="subtitle">{{result.levelTag}}｜{{result.questionCount}} 题完成</view>
-        <view class="subtitle">二答平均进步值：{{result.progressScore}}</view>
+        <view class="title">{{result.roleLabel}}</view>
+        <view class="subtitle">{{result.levelLabel}} · {{result.levelTag}}</view>
       </view>
-      <view class="score-big">{{result.averageScore}}</view>
+      <view class="score-wrap">
+        <view class="score-big">{{result.averageScore}}</view>
+        <view class="score-label">综合分</view>
+      </view>
+    </view>
+    <view class="hero-metrics">
+      <view class="metric-item">完成 {{result.questionCount}} 题</view>
+      <view class="metric-item">二答进步 {{result.progressScore}}</view>
     </view>
   </view>
 
   <view class="tab-row">
     <view class="tab-btn {{reportTab === 0 ? 'active' : ''}}" data-index="0" bindtap="switchTab">
-      报告1：最该改3点
+      核心改进
     </view>
     <view class="tab-btn {{reportTab === 1 ? 'active' : ''}}" data-index="1" bindtap="switchTab">
-      报告2：逐题详解
+      逐题详解
     </view>
   </view>
 
   <view wx:if="{{reportTab === 0}}">
     <view class="card">
-      <view class="question-title">本次最该改的 3 点</view>
+      <view class="section-title">本次最该改的 3 点</view>
       <view wx:for="{{result.reportTop3}}" wx:key="*this" class="tip-item">• {{item}}</view>
     </view>
 
     <view class="card">
-      <view class="question-title">6维雷达（文本版）</view>
+      <view class="section-title">6维能力图（文本）</view>
       <view wx:for="{{result.dimensionRadarView}}" wx:key="key" class="radar-row">
-        <view class="radar-label">{{item.label}} {{item.value}}</view>
+        <view class="inline-row">
+          <view class="radar-label">{{item.label}}</view>
+          <view class="radar-score">{{item.value}}</view>
+        </view>
         <view class="bar-bg">
           <view class="bar-value" style="width: {{item.barWidth}};"></view>
         </view>
@@ -37,7 +46,7 @@
   </view>
 
   <view wx:if="{{reportTab === 1}}">
-    <view class="card" wx:for="{{result.recordsView}}" wx:key="questionId">
+    <view class="card detail-card" wx:for="{{result.recordsView}}" wx:key="questionId">
       <view class="record-title">Q{{index + 1}}. {{item.prompt}}</view>
       <view class="record-meta">题型：{{item.questionType}}</view>
       <view class="record-meta">一答 {{item.firstScore}} → 二答 {{item.secondScore}}（进步 {{item.progressValue}}）</view>
@@ -47,9 +56,7 @@
       <view wx:for="{{item.taskBreakdown}}" wx:key="*this" class="record-line">- {{item}}</view>
 
       <view class="sub-title">缺失要点补充模板</view>
-      <view wx:for="{{item.missingPointTemplates}}" wx:key="point" class="record-line">
-        - {{item.point}}：{{item.template}}
-      </view>
+      <view wx:for="{{item.missingPointTemplates}}" wx:key="point" class="record-line">- {{item.point}}：{{item.template}}</view>
 
       <view class="sub-title" wx:if="{{item.hitSentences.length > 0}}">命中要点句</view>
       <view wx:for="{{item.hitSentences}}" wx:key="*this" class="record-line">“{{item}}”</view>
@@ -57,7 +64,7 @@
       <view class="sub-title" wx:if="{{item.offTopicSentences.length > 0}}">疑似跑题句</view>
       <view wx:for="{{item.offTopicSentences}}" wx:key="*this" class="record-line warning">“{{item}}”</view>
 
-      <view class="sub-title">江苏本地化素材建议</view>
+      <view class="sub-title">本地化素材建议</view>
       <view wx:for="{{item.localMaterialTips}}" wx:key="*this" class="record-line">- {{item}}</view>
 
       <view class="sub-title">一答原文</view>

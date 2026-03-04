@@ -26,12 +26,25 @@ function buildFirstFeedback(evaluation, followUp) {
   };
 }
 
+function calcProgressPercent(currentIndex, questionCount, phase) {
+  const totalSteps = Math.max(1, Number(questionCount || 1) * 2);
+  const step = Number(currentIndex || 0) * 2 + (phase === "second" ? 2 : 1);
+  return Math.max(4, Math.min(100, Math.round((step / totalSteps) * 100)));
+}
+
+function calcTimerPercent(remainingSeconds) {
+  return Math.max(
+    0,
+    Math.min(100, Math.round((Number(remainingSeconds || 0) / DEFAULT_SET_SECONDS) * 100))
+  );
+}
+
 Page({
   data: {
-    role: "frontend",
-    level: "junior",
-    roleLabel: "前端工程师",
-    levelLabel: "初级",
+    role: "jiangsu_civil_service",
+    level: "foundation",
+    roleLabel: "江苏省考",
+    levelLabel: "基础训练",
     questionCount: DAILY_QUESTION_COUNT,
     questions: [],
     currentIndex: 0,
@@ -40,6 +53,8 @@ Page({
     phaseLabel: "一答",
     answer: "",
     remainingSeconds: DEFAULT_SET_SECONDS,
+    timerPercent: 100,
+    progressPercent: 10,
     isSubmitting: false,
     secondModeOptions: SECOND_ANSWER_MODES,
     selectedSecondMode: SECOND_ANSWER_MODES[0].value,
@@ -49,8 +64,8 @@ Page({
   },
 
   onLoad(options) {
-    const role = options.role || "frontend";
-    const level = options.level || "junior";
+    const role = options.role || "jiangsu_civil_service";
+    const level = options.level || "foundation";
     const count = Math.max(1, Math.min(5, Number(options.count) || DAILY_QUESTION_COUNT));
 
     const questions = getQuestions(role, level, count);
@@ -74,6 +89,8 @@ Page({
       phaseLabel: "一答",
       answer: "",
       remainingSeconds: DEFAULT_SET_SECONDS,
+      timerPercent: 100,
+      progressPercent: calcProgressPercent(0, questions.length, "first"),
       selectedSecondMode: mode.value,
       selectedSecondModeLabel: mode.label,
       secondModeTip: mode.tip,
@@ -103,11 +120,17 @@ Page({
     this.timer = setInterval(() => {
       const next = this.data.remainingSeconds - 1;
       if (next <= 0) {
-        this.setData({ remainingSeconds: 0 });
+        this.setData({
+          remainingSeconds: 0,
+          timerPercent: 0
+        });
         this.submitCurrent(true, "");
         return;
       }
-      this.setData({ remainingSeconds: next });
+      this.setData({
+        remainingSeconds: next,
+        timerPercent: calcTimerPercent(next)
+      });
     }, 1000);
   },
 
@@ -189,6 +212,8 @@ Page({
       phaseLabel: "二答",
       answer: "",
       remainingSeconds: DEFAULT_SET_SECONDS,
+      timerPercent: 100,
+      progressPercent: calcProgressPercent(index, this.data.questionCount, "second"),
       selectedSecondMode: mode.value,
       selectedSecondModeLabel: mode.label,
       secondModeTip: mode.tip,
@@ -269,6 +294,8 @@ Page({
       phaseLabel: "一答",
       answer: "",
       remainingSeconds: DEFAULT_SET_SECONDS,
+      timerPercent: 100,
+      progressPercent: calcProgressPercent(nextIndex, this.data.questionCount, "first"),
       selectedSecondMode: defaultMode.value,
       selectedSecondModeLabel: defaultMode.label,
       secondModeTip: defaultMode.tip,

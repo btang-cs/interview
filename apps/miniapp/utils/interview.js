@@ -1,502 +1,536 @@
 const ROLE_OPTIONS = [
-  { value: "frontend", label: "前端工程师" },
-  { value: "backend", label: "后端工程师" },
-  { value: "product", label: "产品经理" }
+  { value: "jiangsu_civil_service", label: "江苏省考" },
+  { value: "public_institution", label: "事业编" },
+  { value: "selected_graduate", label: "选调生" }
 ];
 
 const LEVEL_OPTIONS = [
-  { value: "junior", label: "初级" },
-  { value: "middle", label: "中级" },
-  { value: "senior", label: "高级" }
+  { value: "foundation", label: "基础训练" },
+  { value: "advanced", label: "进阶训练" },
+  { value: "sprint", label: "冲刺模考" }
 ];
 
 const QUESTION_BANK = {
-  frontend: {
-    junior: [
+  jiangsu_civil_service: {
+    foundation: [
       {
-        id: "fe-j-1",
-        prompt: "解释一下浏览器从输入 URL 到页面展示的大致过程。",
-        keywords: ["DNS", "TCP", "HTTP", "渲染", "解析"],
+        id: "js-f-1",
+        questionType: "综合分析",
+        prompt: "有人说“基层工作要讲速度”，也有人说“基层工作要讲温度”。你怎么看？",
+        keywords: ["表态", "辩证", "群众需求", "效率", "平衡"],
         followUps: [
-          "如果首屏慢，你会优先排查哪三个环节？",
-          "渲染阻塞资源通常有哪些？",
-          "你在项目里做过哪些首屏优化？"
+          "如果你在窗口岗位，如何同时保证速度和温度？",
+          "请给出一个可操作的改进动作。",
+          "如何避免“口号化表达”？"
         ]
       },
       {
-        id: "fe-j-2",
-        prompt: "请对比 var、let、const 的区别，并举例说明。",
-        keywords: ["块级作用域", "变量提升", "暂时性死区", "不可变"],
+        id: "js-f-2",
+        questionType: "组织管理",
+        prompt: "单位准备开展“反诈进社区”宣传活动，由你负责，你怎么组织？",
+        keywords: ["目标对象", "分工", "流程", "重点人群", "复盘"],
         followUps: [
-          "为什么说 const 不是绝对不可变？",
-          "在团队规范中你会如何约束变量声明？",
-          "有没有因为作用域导致的线上问题案例？"
+          "如何提升老年群体参与度？",
+          "如果到场率不高，你如何补救？",
+          "活动效果如何评估？"
         ]
       },
       {
-        id: "fe-j-3",
-        prompt: "什么是事件冒泡与事件捕获？实际开发中怎么用？",
-        keywords: ["事件流", "捕获", "冒泡", "阻止传播", "事件委托"],
+        id: "js-f-3",
+        questionType: "应急应变",
+        prompt: "政务大厅网络中断，群众排队情绪激动，你作为值班人员怎么办？",
+        keywords: ["先稳控", "解释", "分流", "抢修", "回访"],
         followUps: [
-          "什么时候应该用事件委托？",
-          "stopPropagation 和 preventDefault 区别是什么？",
-          "你处理过复杂交互事件冲突吗？"
+          "第一句话你会怎么说？",
+          "如何防止现场冲突升级？",
+          "恢复后你会如何复盘？"
         ]
       },
       {
-        id: "fe-j-4",
-        prompt: "请描述你理解的组件化开发。",
-        keywords: ["复用", "职责单一", "状态", "通信", "可维护"],
+        id: "js-f-4",
+        questionType: "人际关系",
+        prompt: "老同事觉得你“按流程办事太死板”，公开质疑你的工作方式，你怎么办？",
+        keywords: ["尊重", "沟通", "目标一致", "试点", "改进"],
         followUps: [
-          "你会如何划分一个页面的组件边界？",
-          "组件复用失控时怎么治理？",
-          "你如何设计通用组件的 API？"
+          "如何在坚持原则下维护关系？",
+          "如果对方持续不配合怎么办？",
+          "你会如何达成团队共识？"
         ]
       },
       {
-        id: "fe-j-5",
-        prompt: "在小程序里 setData 使用时需要注意什么？",
-        keywords: ["性能", "数据量", "频率", "diff", "最小更新"],
+        id: "js-f-5",
+        questionType: "岗位匹配",
+        prompt: "你为什么报考江苏省考？请谈谈你的优势和短板。",
+        keywords: ["报考动机", "岗位认知", "优势", "短板", "计划"],
         followUps: [
-          "如何减少不必要的 setData？",
-          "如果页面卡顿你会如何定位？",
-          "你是否做过数据分片更新？"
+          "如何证明你的优势是可验证的？",
+          "短板准备如何补齐？",
+          "入职初期你最想做成什么事？"
         ]
       }
     ],
-    middle: [
+    advanced: [
       {
-        id: "fe-m-1",
-        prompt: "谈谈你对前端状态管理的理解，以及何时需要全局状态。",
-        keywords: ["单向数据流", "可预测", "共享状态", "解耦", "调试"],
+        id: "js-a-1",
+        questionType: "综合分析",
+        prompt: "当前基层治理中“填表留痕多、服务时间少”现象仍然存在，你怎么看？",
+        keywords: ["问题本质", "形式主义", "减负", "服务导向", "机制"],
         followUps: [
-          "什么情况下不建议引入全局状态？",
-          "如何避免状态过度设计？",
-          "你做过哪些状态层的性能优化？"
+          "你会先改哪类低效留痕？",
+          "如何防止整改后反弹？",
+          "如何平衡监督与减负？"
         ]
       },
       {
-        id: "fe-m-2",
-        prompt: "如何做前端性能监控？你会关注哪些核心指标？",
-        keywords: ["FCP", "LCP", "TTFB", "CLS", "埋点"],
+        id: "js-a-2",
+        questionType: "组织管理",
+        prompt: "你负责一次老旧小区改造民意调研，居民诉求差异大，怎么推进？",
+        keywords: ["分层调研", "协商", "共识", "排序", "公示"],
         followUps: [
-          "你会如何区分网络慢还是渲染慢？",
-          "异常波动出现后你的排查路径是什么？",
-          "如何把监控数据用于迭代优先级？"
+          "如何处理少数强烈反对意见？",
+          "预算不足时如何排序诉求？",
+          "如何把调研结果转化为实施方案？"
         ]
       },
       {
-        id: "fe-m-3",
-        prompt: "请讲一个你主导过的前端重构案例。",
-        keywords: ["背景", "方案", "收益", "风险", "迁移"],
+        id: "js-a-3",
+        questionType: "应急应变",
+        prompt: "新政策实施首日引发网民质疑“办理更麻烦”，舆情升温，你怎么办？",
+        keywords: ["研判", "回应", "证据", "优化", "复盘"],
         followUps: [
-          "你如何控制重构期间的业务风险？",
-          "如何衡量重构效果？",
-          "回头看有什么决策会改？"
+          "谁来发声更合适？",
+          "如何做到回应快又口径稳？",
+          "如何把舆情转化为优化契机？"
         ]
       },
       {
-        id: "fe-m-4",
-        prompt: "你如何设计一个可扩展的前端工程化体系？",
-        keywords: ["构建", "CI", "规范", "模块化", "自动化"],
+        id: "js-a-4",
+        questionType: "人际关系",
+        prompt: "两位领导对同一事项意见不一致，都让你先按自己意见推进，你怎么办？",
+        keywords: ["请示", "事实依据", "方案比较", "统筹", "留痕"],
         followUps: [
-          "你会先做哪三件事？",
-          "如何推动团队接受新规范？",
-          "你如何处理历史包袱？"
+          "如何避免推进停滞？",
+          "时间紧迫时如何先动起来？",
+          "如何向双方解释你的处理逻辑？"
         ]
       },
       {
-        id: "fe-m-5",
-        prompt: "多人协作时，如何保障前端代码质量？",
-        keywords: ["Code Review", "Lint", "测试", "门禁", "规范"],
+        id: "js-a-5",
+        questionType: "政策理解",
+        prompt: "请谈谈你对“高效办成一件事”改革要求的理解和落地抓手。",
+        keywords: ["目标", "流程再造", "协同", "数据共享", "体验"],
         followUps: [
-          "你会设置哪些 CI 阻断规则？",
-          "如何让 Code Review 不流于形式？",
-          "如何平衡质量与迭代速度？"
+          "你认为最大的落地难点是什么？",
+          "如何从群众角度定义“高效”？",
+          "请给出一个量化指标。"
         ]
       }
     ],
-    senior: [
+    sprint: [
       {
-        id: "fe-s-1",
-        prompt: "如果让你从 0 到 1 设计前端架构，你的关键决策点有哪些？",
-        keywords: ["边界", "可扩展", "稳定性", "监控", "治理"],
+        id: "js-s-1",
+        questionType: "综合分析",
+        prompt: "面对网络“快问快办”的诉求，你怎么看“快”和“准”的关系？",
+        keywords: ["效率", "准确", "流程", "风险", "平衡"],
         followUps: [
-          "如何在早期避免架构过度？",
-          "架构演进如何与组织规模匹配？",
-          "你怎么定义架构成功？"
+          "如何避免“快而不准”？",
+          "你会设置哪些质量校验点？",
+          "如何在高压下保持服务稳定？"
         ]
       },
       {
-        id: "fe-s-2",
-        prompt: "谈谈你如何建设跨团队前端技术影响力。",
-        keywords: ["标准化", "赋能", "平台化", "度量", "协同"],
+        id: "js-s-2",
+        questionType: "组织管理",
+        prompt: "你要牵头跨部门专项整治，参与单位多、周期短，如何统筹？",
+        keywords: ["目标拆解", "责任矩阵", "进度机制", "风险预案", "评估"],
         followUps: [
-          "你如何处理团队间技术分歧？",
-          "哪些指标能证明影响力有效？",
-          "失败过的推动案例是什么？"
+          "如何处理部门间口径不一致？",
+          "如何避免会议空转？",
+          "关键节点延误时如何兜底？"
         ]
       },
       {
-        id: "fe-s-3",
-        prompt: "如何制定一个年度前端技术规划？",
-        keywords: ["目标", "优先级", "ROI", "风险", "里程碑"],
+        id: "js-s-3",
+        questionType: "应急应变",
+        prompt: "台风预警升级，社区需在4小时内完成重点人群转移，你怎么组织？",
+        keywords: ["研判", "分组", "重点人群", "联动", "复核"],
         followUps: [
-          "你怎么争取资源和预算？",
-          "业务短期需求和长期建设冲突怎么办？",
-          "如何保证规划可落地？"
+          "如何识别遗漏人员？",
+          "资源不足时如何分配优先级？",
+          "转移后如何做信息回传？"
         ]
       },
       {
-        id: "fe-s-4",
-        prompt: "在性能、稳定性、研发效率冲突时，你如何做技术取舍？",
-        keywords: ["权衡", "收益", "成本", "阶段性", "复盘"],
+        id: "js-s-4",
+        questionType: "人际关系",
+        prompt: "群众在窗口拍视频投诉“态度差”，你作为现场负责人怎么办？",
+        keywords: ["安抚", "核查", "公开透明", "整改", "回访"],
         followUps: [
-          "有没有一个你做错的取舍案例？",
-          "怎么说服业务接受技术投入？",
-          "如何设计可回滚方案？"
+          "如何既维护群众权益又稳定团队？",
+          "是否需要公开致歉，依据是什么？",
+          "如何把个案转化为机制改进？"
         ]
       },
       {
-        id: "fe-s-5",
-        prompt: "你如何评估并引入新技术栈，避免团队被技术潮流裹挟？",
-        keywords: ["试点", "评估", "迁移成本", "培训", "退出机制"],
+        id: "js-s-5",
+        questionType: "岗位匹配",
+        prompt: "你如何看待江苏省考岗位“任务重、节奏快、要求高”的工作特点？",
+        keywords: ["认知", "抗压", "执行", "复盘", "成长"],
         followUps: [
-          "试点失败时你会如何止损？",
-          "你会设置哪些准入门槛？",
-          "如何管理多技术栈并存的复杂度？"
+          "请举一个高压推进任务的例子。",
+          "如果连续加班效率下降你怎么调整？",
+          "如何做到“忙而不乱”？"
         ]
       }
     ]
   },
-  backend: {
-    junior: [
+  public_institution: {
+    foundation: [
       {
-        id: "be-j-1",
-        prompt: "请解释 HTTP 和 HTTPS 的区别。",
-        keywords: ["TLS", "加密", "证书", "握手", "安全"],
+        id: "sy-f-1",
+        questionType: "岗位匹配",
+        prompt: "你为什么报考事业编？你如何理解“公益属性”与“服务效率”？",
+        keywords: ["动机", "公益", "责任", "服务", "效率"],
         followUps: [
-          "HTTPS 为什么还能被中间人攻击？",
-          "证书过期会发生什么？",
-          "你在项目里如何配置 HTTPS？"
+          "如何体现“以群众为中心”？",
+          "效率与规范冲突时你怎么取舍？",
+          "你将如何快速适应岗位？"
         ]
       },
       {
-        id: "be-j-2",
-        prompt: "什么是数据库索引？什么时候应该加索引？",
-        keywords: ["查询", "B+树", "回表", "选择性", "写入开销"],
+        id: "sy-f-2",
+        questionType: "综合分析",
+        prompt: "有人说“事业单位工作稳定但创新不足”，你怎么看？",
+        keywords: ["辩证", "稳定", "创新", "改进", "价值"],
         followUps: [
-          "哪些情况加索引反而更慢？",
-          "联合索引最左匹配怎么理解？",
-          "你如何分析慢查询？"
+          "你如何在稳定环境中保持主动性？",
+          "请给出一个创新改进的小切口。",
+          "如何让创新可落地？"
         ]
       },
       {
-        id: "be-j-3",
-        prompt: "请说说你理解的事务和 ACID。",
-        keywords: ["原子性", "一致性", "隔离性", "持久性", "回滚"],
+        id: "sy-f-3",
+        questionType: "组织管理",
+        prompt: "你负责一次“便民服务进社区”活动，如何确保群众真正受益？",
+        keywords: ["需求摸排", "服务清单", "分工", "现场保障", "评估"],
         followUps: [
-          "隔离级别如何影响并发问题？",
-          "你遇到过死锁吗？如何处理？",
-          "分布式事务你了解哪些方案？"
+          "如何覆盖行动不便群体？",
+          "如果现场秩序混乱怎么处理？",
+          "活动后如何持续跟进？"
         ]
       },
       {
-        id: "be-j-4",
-        prompt: "Redis 常见使用场景有哪些？",
-        keywords: ["缓存", "过期", "高并发", "分布式锁", "限流"],
+        id: "sy-f-4",
+        questionType: "应急应变",
+        prompt: "办事系统异常导致业务积压，群众持续投诉，你怎么办？",
+        keywords: ["先处置", "解释", "分流", "协调", "复盘"],
         followUps: [
-          "缓存穿透和击穿怎么处理？",
-          "你如何做缓存一致性？",
-          "Redis 持久化策略了解吗？"
+          "第一时间你会协调哪些人？",
+          "如何稳定群众情绪？",
+          "系统恢复后如何补救？"
         ]
       },
       {
-        id: "be-j-5",
-        prompt: "描述一次你排查线上问题的流程。",
-        keywords: ["定位", "日志", "复现", "回滚", "复盘"],
+        id: "sy-f-5",
+        questionType: "人际关系",
+        prompt: "同事认为你的工作标准“太严格”，影响了整体推进速度，你怎么办？",
+        keywords: ["沟通", "标准", "协同", "试运行", "统一"],
         followUps: [
-          "你如何缩小问题范围？",
-          "如何避免类似问题再次发生？",
-          "在高压场景下你如何做沟通？"
+          "如何解释“标准化”的必要性？",
+          "如何平衡质量和速度？",
+          "如何形成团队共识？"
         ]
       }
     ],
-    middle: [
+    advanced: [
       {
-        id: "be-m-1",
-        prompt: "你如何设计一个高并发下的下单系统？",
-        keywords: ["幂等", "削峰", "事务", "库存", "一致性"],
+        id: "sy-a-1",
+        questionType: "政策理解",
+        prompt: "你如何理解事业单位“放管服”改革中的“放”和“管”？",
+        keywords: ["简政", "规范", "风险", "监督", "服务体验"],
         followUps: [
-          "如何防止超卖？",
-          "消息重复消费如何处理？",
-          "关键指标你会看哪些？"
+          "哪些事项可以下放，哪些不能？",
+          "如何防止“放而不管”？",
+          "如何衡量改革成效？"
         ]
       },
       {
-        id: "be-m-2",
-        prompt: "谈谈你对微服务拆分原则的理解。",
-        keywords: ["领域边界", "独立部署", "通信", "治理", "观测"],
+        id: "sy-a-2",
+        questionType: "组织管理",
+        prompt: "你需要组织一次面向群众的政策宣讲会，参会对象复杂，如何设计方案？",
+        keywords: ["对象分层", "内容设计", "触达渠道", "互动答疑", "复盘"],
         followUps: [
-          "拆分过细会有什么问题？",
-          "你如何处理跨服务事务？",
-          "服务治理平台你会怎么做？"
+          "如何让政策语言更易懂？",
+          "现场突发质疑如何回应？",
+          "如何验证宣讲有效？"
         ]
       },
       {
-        id: "be-m-3",
-        prompt: "你做过哪些数据库层面的性能优化？",
-        keywords: ["索引", "SQL", "分库分表", "连接池", "慢查询"],
+        id: "sy-a-3",
+        questionType: "综合分析",
+        prompt: "在公共服务中，群众“主观满意”与“客观合规”不一致时，你怎么看？",
+        keywords: ["合规", "体验", "解释", "平衡", "改进"],
         followUps: [
-          "如何判断是否要分库分表？",
-          "你会如何评估优化收益？",
-          "你如何防止回归？"
+          "如何把规则讲到群众能理解？",
+          "如何提升群众感受度？",
+          "请举一个可落地动作。"
         ]
       },
       {
-        id: "be-m-4",
-        prompt: "如何设计一个可观测性体系？",
-        keywords: ["日志", "指标", "链路追踪", "告警", "SLO"],
+        id: "sy-a-4",
+        questionType: "应急应变",
+        prompt: "服务窗口出现网络舆情，指责你单位“推诿”，你作为经办人如何应对？",
+        keywords: ["核实", "回应", "证据", "改进", "跟踪"],
         followUps: [
-          "告警噪音如何控制？",
-          "如何定义核心业务 SLI？",
-          "排障链路你会如何标准化？"
+          "如何统一对外口径？",
+          "如何避免二次舆情发酵？",
+          "如何把舆情问题转化为流程优化？"
         ]
       },
       {
-        id: "be-m-5",
-        prompt: "你如何做接口的向后兼容与版本管理？",
-        keywords: ["版本", "兼容", "灰度", "契约", "弃用"],
+        id: "sy-a-5",
+        questionType: "人际关系",
+        prompt: "跨科室协作时，对方总是拖延反馈，影响你负责事项进度，你怎么办？",
+        keywords: ["沟通", "节点管理", "协同机制", "提醒", "升级"],
         followUps: [
-          "哪些改动会破坏兼容性？",
-          "你如何推动客户端升级？",
-          "废弃接口如何治理？"
+          "如何避免关系僵化？",
+          "如果多次沟通无效怎么办？",
+          "如何建立长期协作机制？"
         ]
       }
     ],
-    senior: [
+    sprint: [
       {
-        id: "be-s-1",
-        prompt: "请描述你设计大型分布式系统的核心方法论。",
-        keywords: ["一致性", "可用性", "扩展性", "容错", "治理"],
+        id: "sy-s-1",
+        questionType: "综合分析",
+        prompt: "“数字化服务让办事更快，但也让部分老年人更难办事”，你怎么看？",
+        keywords: ["数字鸿沟", "便民", "适老化", "兜底", "平衡"],
         followUps: [
-          "CAP 在你实际项目里如何权衡？",
-          "系统边界如何定义？",
-          "怎样避免系统复杂度失控？"
+          "如何做好线上线下协同？",
+          "适老化最优先改哪块？",
+          "如何评估改造效果？"
         ]
       },
       {
-        id: "be-s-2",
-        prompt: "如何主导一次核心链路的稳定性治理项目？",
-        keywords: ["基线", "演练", "降级", "预案", "复盘"],
+        id: "sy-s-2",
+        questionType: "组织管理",
+        prompt: "你负责年度服务质量提升项目，请给出推进方案。",
+        keywords: ["目标", "基线", "措施", "监督", "评估"],
         followUps: [
-          "你会先做哪三个治理动作？",
-          "如何推动跨团队共识？",
-          "如何量化稳定性提升？"
+          "如何识别最影响满意度的环节？",
+          "如何推动一线执行？",
+          "如何避免项目“重形式轻效果”？"
         ]
       },
       {
-        id: "be-s-3",
-        prompt: "你如何做技术债管理与偿还优先级排序？",
-        keywords: ["风险", "收益", "成本", "排期", "可见性"],
+        id: "sy-s-3",
+        questionType: "应急应变",
+        prompt: "考试当天报名系统突发故障，热线被打爆，你如何处置？",
+        keywords: ["应急分级", "信息发布", "分流", "补偿", "复盘"],
         followUps: [
-          "业务不买账时怎么办？",
-          "你如何说明不还债的代价？",
-          "技术债如何持续治理而非一次性行动？"
+          "如何防止投诉集中升级？",
+          "是否需要延长报名时间，依据是什么？",
+          "后续如何修复公信力？"
         ]
       },
       {
-        id: "be-s-4",
-        prompt: "你如何建设后端团队工程生产力平台？",
-        keywords: ["模板化", "自动化", "自助化", "标准", "度量"],
+        id: "sy-s-4",
+        questionType: "人际关系",
+        prompt: "领导临时增加任务，但你手头重点工作马上到截止时间，你怎么办？",
+        keywords: ["优先级", "沟通", "资源协调", "节点", "结果"],
         followUps: [
-          "平台建设如何避免变成负担？",
-          "哪些能力优先级最高？",
-          "如何衡量平台 ROI？"
+          "你会如何向领导汇报取舍依据？",
+          "如何确保两项工作都不失控？",
+          "事后如何优化任务承接机制？"
         ]
       },
       {
-        id: "be-s-5",
-        prompt: "当系统出现重大事故时，你如何组织技术与沟通？",
-        keywords: ["指挥", "分工", "止损", "透明沟通", "复盘"],
+        id: "sy-s-5",
+        questionType: "政策理解",
+        prompt: "你如何理解事业单位“规范管理与激发活力并重”的要求？",
+        keywords: ["规范", "激励", "绩效", "公平", "导向"],
         followUps: [
-          "你如何平衡快速恢复和根因定位？",
-          "对外沟通你会怎么做？",
-          "事故后治理怎么防止形式化？"
+          "如何设计“有激励、可落地”的机制？",
+          "如何避免激励失衡？",
+          "你认为最难的执行点是什么？"
         ]
       }
     ]
   },
-  product: {
-    junior: [
+  selected_graduate: {
+    foundation: [
       {
-        id: "pm-j-1",
-        prompt: "你如何理解一个产品需求从提出到上线的流程？",
-        keywords: ["调研", "需求分析", "PRD", "评审", "验收"],
+        id: "xd-f-1",
+        questionType: "岗位匹配",
+        prompt: "你为什么报考选调生？你对“到基层去、到一线去”如何理解？",
+        keywords: ["初心", "基层", "历练", "责任", "成长"],
         followUps: [
-          "你会如何定义验收标准？",
-          "需求变更时你怎么处理？",
-          "你如何和研发协作排期？"
+          "你如何证明自己能扎根基层？",
+          "基层琐碎事务多，你如何保持动力？",
+          "你未来3年的成长目标是什么？"
         ]
       },
       {
-        id: "pm-j-2",
-        prompt: "如何判断一个需求值不值得做？",
-        keywords: ["用户价值", "业务价值", "成本", "优先级", "数据"],
+        id: "xd-f-2",
+        questionType: "综合分析",
+        prompt: "有人说“年轻干部要敢闯”，也有人说“年轻干部要稳妥”，你怎么看？",
+        keywords: ["辩证", "原则", "担当", "稳妥", "边界"],
         followUps: [
-          "你会用哪些框架做优先级？",
-          "缺少数据时怎么决策？",
-          "怎么避免拍脑袋需求？"
+          "什么情况下该“快”，什么情况下该“稳”？",
+          "如何避免“盲目冒进”？",
+          "请结合基层场景说明。"
         ]
       },
       {
-        id: "pm-j-3",
-        prompt: "你如何做竞品分析？",
-        keywords: ["目标", "维度", "差异", "机会点", "结论"],
+        id: "xd-f-3",
+        questionType: "组织管理",
+        prompt: "你要组织青年干部学习交流活动，如何提高参与质量？",
+        keywords: ["目标", "议题", "互动", "产出", "跟踪"],
         followUps: [
-          "竞品分析如何避免流于表面？",
-          "你如何把结论落成需求？",
-          "竞品强于我们时你会怎么应对？"
+          "如何避免活动流于形式？",
+          "如何沉淀可复用成果？",
+          "如何让活动与实际工作结合？"
         ]
       },
       {
-        id: "pm-j-4",
-        prompt: "描述一次你处理跨部门协作冲突的经历。",
-        keywords: ["目标对齐", "沟通", "取舍", "推动", "复盘"],
+        id: "xd-f-4",
+        questionType: "人际关系",
+        prompt: "你作为年轻干部提出新想法，被资深同事认为“不接地气”，你怎么办？",
+        keywords: ["尊重", "请教", "试点", "迭代", "共识"],
         followUps: [
-          "你如何定义冲突的根因？",
-          "怎么推动达成一致？",
-          "事后你做了哪些机制优化？"
+          "如何处理“代际认知差异”？",
+          "如何让新方案更接地气？",
+          "如何推进而不激化矛盾？"
         ]
       },
       {
-        id: "pm-j-5",
-        prompt: "你如何设计一个新手引导流程？",
-        keywords: ["路径", "转化", "反馈", "A/B 测试", "迭代"],
+        id: "xd-f-5",
+        questionType: "应急应变",
+        prompt: "你在村里走访时，群众对历史遗留问题集中表达不满，现场气氛紧张，你怎么办？",
+        keywords: ["安抚", "倾听", "分类", "上报", "反馈"],
         followUps: [
-          "关键转化漏斗怎么定义？",
-          "你会埋哪些点？",
-          "如何判断引导是否有效？"
+          "如何避免承诺过度？",
+          "如何让群众看到推进进展？",
+          "如何形成后续跟进机制？"
         ]
       }
     ],
-    middle: [
+    advanced: [
       {
-        id: "pm-m-1",
-        prompt: "如何从业务目标拆解到可执行的产品路线图？",
-        keywords: ["目标", "里程碑", "优先级", "资源", "风险"],
+        id: "xd-a-1",
+        questionType: "政策理解",
+        prompt: "请谈谈你对“调查研究是做好工作的基本功”的理解。",
+        keywords: ["问题导向", "实地调研", "数据", "转化", "闭环"],
         followUps: [
-          "路线图和版本计划有什么区别？",
-          "如何处理高层临时插单？",
-          "你如何对齐多方预期？"
+          "如何避免“为了调研而调研”？",
+          "如何把调研结论转成可执行措施？",
+          "调研报告如何让领导可决策？"
         ]
       },
       {
-        id: "pm-m-2",
-        prompt: "你如何搭建产品指标体系并驱动增长？",
-        keywords: ["北极星", "漏斗", "留存", "转化", "实验"],
+        id: "xd-a-2",
+        questionType: "综合分析",
+        prompt: "基层治理中“既要守住底线，又要激发活力”，你怎么看？",
+        keywords: ["底线思维", "创新", "风险", "机制", "平衡"],
         followUps: [
-          "指标冲突时如何取舍？",
-          "实验失败后你怎么复盘？",
-          "如何避免只看短期指标？"
+          "哪些事情必须严格按规矩办？",
+          "哪些事情可以先试点再推广？",
+          "如何构建可控创新机制？"
         ]
       },
       {
-        id: "pm-m-3",
-        prompt: "请讲一个你主导的复杂项目，重点说决策过程。",
-        keywords: ["背景", "方案", "权衡", "落地", "结果"],
+        id: "xd-a-3",
+        questionType: "组织管理",
+        prompt: "你负责一次“村情民意走访周”，如何确保走访真实有效？",
+        keywords: ["样本覆盖", "问题清单", "分类处理", "时限", "回访"],
         followUps: [
-          "你如何处理不确定性？",
-          "关键决策依据是什么？",
-          "如果重来你会改什么？"
+          "如何避免只听“熟人意见”？",
+          "如何推动问题快速闭环？",
+          "如何向群众反馈处理进度？"
         ]
       },
       {
-        id: "pm-m-4",
-        prompt: "当用户反馈与业务目标冲突时你如何决策？",
-        keywords: ["分层", "影响面", "长期价值", "实验", "平衡"],
+        id: "xd-a-4",
+        questionType: "应急应变",
+        prompt: "突发暴雨导致村道积水，群众在群里持续质疑“处置慢”，你怎么办？",
+        keywords: ["现场核实", "联动处置", "信息发布", "安抚", "复盘"],
         followUps: [
-          "如何处理高价值客户的个性化诉求？",
-          "你如何避免被噪音反馈带偏？",
-          "决策后如何验证正确性？"
+          "你会优先处置哪些风险点？",
+          "如何回应网民质疑？",
+          "如何把应急经验沉淀成预案？"
         ]
       },
       {
-        id: "pm-m-5",
-        prompt: "你如何建设需求评审机制，提高交付质量？",
-        keywords: ["标准化", "评审清单", "风险前置", "验收", "复盘"],
+        id: "xd-a-5",
+        questionType: "人际关系",
+        prompt: "你推动的一项便民举措推进缓慢，村干部认为“没必要折腾”，你怎么办？",
+        keywords: ["沟通", "证据", "试点", "协同", "固化"],
         followUps: [
-          "评审机制如何避免走形式？",
-          "你会定义哪些强制项？",
-          "如何持续优化评审效率？"
+          "如何让对方看到实际收益？",
+          "如果仍有阻力你如何推进？",
+          "如何形成长效机制？"
         ]
       }
     ],
-    senior: [
+    sprint: [
       {
-        id: "pm-s-1",
-        prompt: "你如何制定 1 年产品战略并确保组织执行？",
-        keywords: ["战略", "目标", "组织协同", "资源", "复盘"],
+        id: "xd-s-1",
+        questionType: "综合分析",
+        prompt: "你怎么看“选调生要在基层‘墩苗’，不能只做‘履历式成长’”？",
+        keywords: ["基层历练", "实践能力", "长期主义", "作风", "实绩"],
         followUps: [
-          "战略如何层层拆解到团队目标？",
-          "你如何应对外部环境变化？",
-          "如何避免战略口号化？"
+          "如何判断自己是真成长还是“忙而无效”？",
+          "你会如何设计自己的能力提升路径？",
+          "如何把“墩苗”成果转化为治理能力？"
         ]
       },
       {
-        id: "pm-s-2",
-        prompt: "当增长见顶时，你会如何寻找第二增长曲线？",
-        keywords: ["用户洞察", "新场景", "试点", "商业模式", "验证"],
+        id: "xd-s-2",
+        questionType: "组织管理",
+        prompt: "你负责牵头一项党建引领基层治理试点工作，请给出推进方案。",
+        keywords: ["目标", "机制", "联动", "群众参与", "评估"],
         followUps: [
-          "你如何降低试错成本？",
-          "什么信号代表方向可行？",
-          "失败方向如何及时止损？"
+          "如何调动村民参与积极性？",
+          "如何处理跨部门协同摩擦？",
+          "如何评估试点是否可复制？"
         ]
       },
       {
-        id: "pm-s-3",
-        prompt: "如何在多产品线之间做资源分配？",
-        keywords: ["ROI", "战略价值", "阶段", "协同", "机会成本"],
+        id: "xd-s-3",
+        questionType: "应急应变",
+        prompt: "节假日返乡高峰，乡镇政务窗口人流激增、投诉增加，你怎么应对？",
+        keywords: ["预判", "增援", "分流", "公开提示", "回访"],
         followUps: [
-          "你如何处理内部竞争？",
-          "短期收入与长期布局冲突怎么办？",
-          "如何提升资源决策透明度？"
+          "如何提前做好资源配置？",
+          "如何兼顾效率与服务体验？",
+          "你会如何进行节后复盘？"
         ]
       },
       {
-        id: "pm-s-4",
-        prompt: "你如何建设高绩效产品团队？",
-        keywords: ["人才梯队", "机制", "授权", "反馈", "文化"],
+        id: "xd-s-4",
+        questionType: "人际关系",
+        prompt: "你在推进重点任务时与另一名年轻干部产生分歧，影响工作节奏，你怎么办？",
+        keywords: ["共同目标", "事实依据", "分工", "协同", "复盘"],
         followUps: [
-          "如何平衡流程和创新？",
-          "你如何培养中层 PM？",
-          "团队低谷期你怎么带？"
+          "如何避免分歧升级为对立？",
+          "时间紧时如何快速统一行动？",
+          "事后如何优化协作方式？"
         ]
       },
       {
-        id: "pm-s-5",
-        prompt: "如果你接手一个增长停滞产品，前 90 天计划是什么？",
-        keywords: ["诊断", "优先级", "快赢", "中期布局", "里程碑"],
+        id: "xd-s-5",
+        questionType: "政策理解",
+        prompt: "请结合基层实践谈谈你对“全过程人民民主”在基层治理中的理解。",
+        keywords: ["参与", "协商", "公开", "反馈", "落实"],
         followUps: [
-          "你会先看哪些核心数据？",
-          "如何判断是产品问题还是渠道问题？",
-          "90 天后如何延续节奏？"
+          "如何避免“参与形式化”？",
+          "群众意见分歧大时如何决策？",
+          "如何让参与结果可见可感？"
         ]
       }
     ]
   }
 };
-
-function shuffle(list) {
-  const arr = list.slice();
-  for (let i = arr.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = tmp;
-  }
-  return arr;
-}
 
 const DAILY_QUESTION_COUNT = 2;
 const DEFAULT_SET_SECONDS = 180;
@@ -506,19 +540,19 @@ const SECOND_ANSWER_MODES = [
     value: "focus_topic",
     label: "只练扣题",
     targetDimension: "topic",
-    tip: "二答只做一件事：每段都回扣题干关键词，避免空泛延展。"
+    tip: "二答只做一件事：句句围绕题干任务，不说无关背景。"
   },
   {
     value: "focus_keypoints",
     label: "只补要点",
     targetDimension: "keypoints",
-    tip: "二答优先补齐缺失要点，建议按“要点1/要点2/要点3”展开。"
+    tip: "二答优先补齐缺失要点，建议用“一是、二是、三是”展开。"
   },
   {
     value: "focus_structure",
     label: "只练结构",
     targetDimension: "structure",
-    tip: "二答固定四段：表态-分析-对策-落地，段间用过渡句连接。"
+    tip: "二答固定四段：表态-分析-对策-落地，突出层次感。"
   }
 ];
 
@@ -532,49 +566,74 @@ const DIMENSION_META = [
 ];
 
 const DIMENSION_ADVICE = {
-  topic: "先明确题干任务句，再逐段回扣关键词。",
-  keypoints: "围绕本题核心要点逐点补齐，避免只讲观点不讲动作。",
-  structure: "采用固定结构作答，先结论后展开。",
-  logic: "多用因果和并列连接词，减少跳跃式表达。",
-  expression: "短句化表达并给出具体动作词，减少口头禅。",
-  rhythm: "按时长均匀分配内容，避免前松后紧或过早结束。"
+  topic: "先拆题干任务句，再逐段回扣核心词。",
+  keypoints: "按“应有要点”逐点补齐，避免泛泛而谈。",
+  structure: "使用“表态-分析-对策-落地”固定骨架。",
+  logic: "多用因果与并列连接词，减少跳跃叙述。",
+  expression: "短句化、动作化表达，少空话套话。",
+  rhythm: "控制节奏，避免前松后紧或过早结束。"
+};
+
+const TRACK_MATERIAL_LIBRARY = {
+  jiangsu_civil_service: [
+    "可结合江苏政务服务、基层治理协同等场景增强贴合度。",
+    "建议加入“高效办成一件事”或基层减负相关抓手。"
+  ],
+  public_institution: [
+    "可结合事业单位公共服务流程优化、群众满意度提升案例。",
+    "建议强调“规范管理 + 服务体验”双目标。"
+  ],
+  selected_graduate: [
+    "可结合基层走访、村情民意、组织协同等一线场景。",
+    "建议体现“到基层去、在实践中成长”的导向。"
+  ]
 };
 
 const QUESTION_TYPE_PATTERNS = [
-  { type: "原理阐释", regex: /(解释|区别|定义|理解|是什么|对比|原理)/ },
-  { type: "方案设计", regex: /(如何|设计|建设|搭建|制定|规划|体系|优化)/ },
-  { type: "案例复盘", regex: /(案例|经历|主导|复盘|做过|项目|90 天)/ },
-  { type: "应急排障", regex: /(故障|问题|应急|事故|高压|排查|冲突|止损)/ }
+  { type: "综合分析", regex: /(怎么看|如何看待|谈谈看法|现象|观点)/ },
+  { type: "组织管理", regex: /(组织|策划|开展|安排|宣传|活动|调研|推进)/ },
+  { type: "应急应变", regex: /(突发|应急|故障|舆情|冲突|情绪激动|被困|投诉)/ },
+  { type: "人际关系", regex: /(同事|领导|群众|协作|矛盾|沟通|配合)/ },
+  { type: "岗位匹配", regex: /(报考|为什么|优势|短板|自我介绍|职业规划|岗位|选调生|省考|事业编)/ },
+  { type: "政策理解", regex: /(政策|改革|落实|执行|制度|规范|减负|振兴|民主)/ }
 ];
 
 const QUESTION_TYPE_KEYPOINTS = {
-  原理阐释: ["先给定义", "说明边界", "对比差异", "给出应用场景"],
-  方案设计: ["目标与约束", "步骤与分工", "风险与预案", "验收指标"],
-  案例复盘: ["背景", "关键动作", "结果数据", "复盘改进"],
-  应急排障: ["先止损", "再定位", "再恢复", "最后复盘"],
+  综合分析: ["明确立场", "分析原因", "指出影响", "提出对策"],
+  组织管理: ["目标对象", "步骤分工", "风险预案", "评估复盘"],
+  应急应变: ["先稳控", "再研判", "再处置", "后复盘"],
+  人际关系: ["尊重沟通", "统一目标", "协同推进", "机制改进"],
+  岗位匹配: ["报考动机", "岗位认知", "能力匹配", "改进计划"],
+  政策理解: ["政策目标", "落地路径", "难点风险", "监督评估"],
   通用: ["结论先行", "核心要点", "可执行动作", "闭环复盘"]
 };
 
 const LOCAL_MATERIAL_LIBRARY = {
-  原理阐释: [
-    "可借盐城政务服务中心提效案例，说明“原理-动作-结果”的对应关系。",
-    "可补充江苏基层窗口场景，用来解释概念在实务中的落点。"
+  综合分析: [
+    "建议加入本地治理案例，体现“观点-行动-结果”。",
+    "可补充群众感受与公共价值，避免空泛议论。"
   ],
-  方案设计: [
-    "可结合盐城基层治理场景，展示“目标-路径-验收”闭环。",
-    "可加入营商环境优化案例，强化方案的执行性与可衡量性。"
+  组织管理: [
+    "建议覆盖“对象分层+过程管控+效果评估”三段式。",
+    "可加入跨部门联动与应急预案，提升可执行性。"
   ],
-  案例复盘: [
-    "可引用江苏本地民生服务改进案例，补充量化结果。",
-    "可用“问题-动作-成效”三句式描述本地化实践。"
+  应急应变: [
+    "建议突出“先稳控再处置”，并交代信息发布机制。",
+    "可补充事后复盘与机制优化，形成闭环。"
   ],
-  应急排障: [
-    "可用窗口突发舆情或系统故障处置场景，强调先稳态再溯源。",
-    "可补充盐城基层应急协同案例，体现分工与复盘机制。"
+  人际关系: [
+    "建议先稳情绪、再谈目标一致，最后落到协同机制。",
+    "避免只讲态度，需交代推进动作和结果。"
   ],
-  通用: [
-    "可优先选江苏本地窗口服务、基层治理、营商环境素材增强真实感。"
-  ]
+  岗位匹配: [
+    "建议用“动机-能力-计划”三段式作答。",
+    "短板部分要给时间节点和改进路径。"
+  ],
+  政策理解: [
+    "建议先讲政策目标，再讲落地抓手和评价指标。",
+    "可加入执行难点及风险防控方案。"
+  ],
+  通用: ["可优先用基层治理、民生服务、营商环境场景增强真实感。"]
 };
 
 function clampScore(n) {
@@ -622,22 +681,27 @@ function enrichQuestion(question) {
 }
 
 function getSecondModeByValue(value) {
-  return (
-    SECOND_ANSWER_MODES.find((x) => x.value === value) ||
-    SECOND_ANSWER_MODES[0]
-  );
+  return SECOND_ANSWER_MODES.find((x) => x.value === value) || SECOND_ANSWER_MODES[0];
+}
+
+function shuffle(list) {
+  const arr = list.slice();
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+  }
+  return arr;
 }
 
 function getQuestions(role, level, count) {
-  const roleBank = QUESTION_BANK[role] || QUESTION_BANK.frontend;
-  const levelBank = roleBank[level] || roleBank.junior;
-  const targetCount = Math.max(
-    1,
-    Math.min(count || DAILY_QUESTION_COUNT, levelBank.length)
-  );
+  const roleBank = QUESTION_BANK[role] || QUESTION_BANK.jiangsu_civil_service;
+  const levelBank = roleBank[level] || roleBank.foundation;
+  const targetCount = Math.max(1, Math.min(count || DAILY_QUESTION_COUNT, levelBank.length));
   return shuffle(levelBank)
     .slice(0, targetCount)
-    .map((q) => enrichQuestion(q));
+    .map((q) => enrichQuestion({ ...q, role }));
 }
 
 function keywordHitRate(answer, keywords) {
@@ -650,34 +714,36 @@ function keywordHitRate(answer, keywords) {
     };
   }
   const normalized = String(answer || "").toLowerCase();
-  const hits = wordList.filter((k) =>
-    normalized.includes(String(k).toLowerCase())
-  );
+  const hits = wordList.filter((k) => normalized.includes(String(k).toLowerCase()));
   const misses = wordList.filter((k) => !hits.includes(k));
   return {
     hits,
     misses,
-    rate: hits.length / keywords.length
+    rate: hits.length / wordList.length
   };
 }
 
 function getTaskBreakdown(question) {
-  const prompt = String((question || {}).prompt || "");
-  const object = prompt.includes("你")
-    ? "作答对象：你本人/你所在团队"
-    : "作答对象：围绕题干中的核心主体";
+  const q = enrichQuestion(question);
+  const object = "对象：题干中的群众/同事/部门等关键主体。";
+  let task = "任务：先给结论，再给原因与行动方案。";
 
-  let task = "任务：先给结论，再给分析和可执行动作。";
-  if (/解释|对比|区别|理解|定义|是什么/.test(prompt)) {
-    task = "任务：先解释核心概念，再补差异与应用场景。";
-  } else if (/如何|设计|建设|制定|规划|搭建|优化/.test(prompt)) {
-    task = "任务：给出可执行方案，覆盖步骤、风险与验收。";
-  } else if (/案例|经历|主导|复盘|做过/.test(prompt)) {
-    task = "任务：按背景-动作-结果-复盘讲清一个真实案例。";
+  if (q.questionType === "综合分析") {
+    task = "任务：先表态，再分析原因与影响，最后提出可执行建议。";
+  } else if (q.questionType === "组织管理") {
+    task = "任务：讲清目标对象、步骤分工、风险预案和评估方式。";
+  } else if (q.questionType === "应急应变") {
+    task = "任务：先稳控现场，再研判，再处置，最后复盘。";
+  } else if (q.questionType === "人际关系") {
+    task = "任务：先稳情绪，再沟通协同，最后机制改进。";
+  } else if (q.questionType === "岗位匹配") {
+    task = "任务：讲清动机、岗位匹配和短板改进计划。";
+  } else if (q.questionType === "政策理解") {
+    task = "任务：讲清政策目标、落地路径、难点及监督评估。";
   }
 
-  const boundary = "边界：必须围绕题干关键词，不展开无关背景。";
-  const tension = "矛盾：在有限时间里兼顾完整性和重点突出。";
+  const boundary = "边界：避免空泛口号，必须结合具体场景和动作。";
+  const tension = "矛盾：在有限时间里兼顾完整性与重点突出。";
   return [object, task, boundary, tension];
 }
 
@@ -706,13 +772,13 @@ function getSentenceEvidence(sentences, keywords) {
 
 function buildMissingPointTemplates(question, answerText, missKeywords) {
   const templates = [];
-  const questionType = question.questionType || "通用";
-  const expectedPoints = question.expectedKeypoints || QUESTION_TYPE_KEYPOINTS.通用;
+  const q = enrichQuestion(question);
+  const expectedPoints = q.expectedKeypoints || QUESTION_TYPE_KEYPOINTS.通用;
 
   (missKeywords || []).slice(0, 3).forEach((item) => {
     templates.push({
       point: item,
-      template: `可补一句：围绕“${item}”给出1个明确动作和1个可验证结果。`
+      template: `可补一句：围绕“${item}”给出1个具体动作和1个结果。`
     });
   });
 
@@ -723,19 +789,25 @@ function buildMissingPointTemplates(question, answerText, missKeywords) {
     if (!String(answerText || "").includes(item)) {
       templates.push({
         point: item,
-        template: `可补一句：本题请补充“${item}”，并给出可落地细节。`
+        template: `可补一句：本题请补充“${item}”，并写出执行细节。`
       });
     }
   });
 
   if (templates.length === 0) {
     templates.push({
-      point: "量化结果",
-      template: "可补一句：给出1个数字化结果，提升说服力。"
+      point: "可量化结果",
+      template: "可补一句：说明预期提升指标（如满意度、办理时效）。"
     });
   }
 
   return templates;
+}
+
+function getLocalMaterialTips(questionType, role) {
+  const typeTips = LOCAL_MATERIAL_LIBRARY[questionType] || LOCAL_MATERIAL_LIBRARY.通用;
+  const trackTips = TRACK_MATERIAL_LIBRARY[role] || [];
+  return dedupe(trackTips.concat(typeTips)).slice(0, 3);
 }
 
 function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) {
@@ -743,12 +815,8 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
   const text = String(answer || "").trim();
   const length = text.length;
   const sentences = splitSentences(text);
-
   const hit = keywordHitRate(text, enrichedQuestion.keywords || []);
   const evidence = getSentenceEvidence(sentences, enrichedQuestion.keywords || []);
-  const structureMarkers = ["首先", "其次", "然后", "最后", "第一", "第二", "第三", "综上", "总之"];
-  const logicMarkers = ["因为", "所以", "因此", "同时", "另外", "如果", "那么", "但是"];
-  const fillerWords = ["这个", "那个", "然后呢", "就是", "嗯", "啊"];
 
   if (!text) {
     const emptyDimensions = {
@@ -767,7 +835,7 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
       focusMode: focusMode || null,
       dimensions: emptyDimensions,
       dimensionList: DIMENSION_META.map((x) => ({ ...x, value: 0 })),
-      suggestions: ["当前回答为空，建议先用“结论一句话+三个要点”完成最小作答。"],
+      suggestions: ["当前回答为空，建议先给结论，再列三条要点。"],
       taskBreakdown: getTaskBreakdown(enrichedQuestion),
       missingPointTemplates: buildMissingPointTemplates(
         enrichedQuestion,
@@ -785,11 +853,13 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
         missingKeywords: (enrichedQuestion.keywords || []).slice(0, 3)
       },
       questionType: enrichedQuestion.questionType,
-      localMaterialTips:
-        LOCAL_MATERIAL_LIBRARY[enrichedQuestion.questionType] ||
-        LOCAL_MATERIAL_LIBRARY.通用
+      localMaterialTips: getLocalMaterialTips(enrichedQuestion.questionType, enrichedQuestion.role)
     };
   }
+
+  const structureMarkers = ["一是", "二是", "三是", "首先", "其次", "最后", "综上", "总之"];
+  const logicMarkers = ["因为", "所以", "因此", "同时", "另外", "如果", "那么", "但是"];
+  const fillerWords = ["这个", "那个", "就是", "然后呢", "嗯", "啊"];
 
   const structureCount = countContains(text, structureMarkers);
   const logicCount = countContains(text, logicMarkers);
@@ -797,25 +867,23 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
   const timeRatio = totalSeconds > 0 ? secondsUsed / totalSeconds : 0;
 
   const topicScore = clampScore(
-    32 + hit.rate * 56 + (length >= 50 ? 8 : -6) - evidence.offTopicSentences.length * 8
+    32 + hit.rate * 56 + (length >= 60 ? 8 : -6) - evidence.offTopicSentences.length * 8
   );
   const keypointScore = clampScore(24 + hit.rate * 72);
   const structureScore = clampScore(
     20 +
       structureCount * 13 +
       (sentences.length >= 3 ? 16 : 0) +
-      (text.includes("首先") && (text.includes("最后") || text.includes("综上")) ? 8 : 0)
+      (text.includes("一是") || text.includes("首先") ? 8 : 0)
   );
   const logicScore = clampScore(
     24 + logicCount * 11 + (sentences.length >= 3 ? 14 : 0) - fillerCount * 4
   );
-  const expressionScore = clampScore(
-    30 + Math.min(34, length / 4) - fillerCount * 5
-  );
+  const expressionScore = clampScore(30 + Math.min(34, length / 4) - fillerCount * 5);
   const rhythmScore = clampScore(
     25 +
       (timeRatio >= 0.45 && timeRatio <= 0.9 ? 40 : timeRatio >= 0.25 ? 25 : 8) +
-      (length >= 60 && length <= 500 ? 20 : length < 30 ? -10 : 10)
+      (length >= 80 && length <= 650 ? 20 : length < 40 ? -10 : 10)
   );
 
   const dimensions = {
@@ -849,23 +917,16 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
 
   const suggestions = weakDimensions.map((item) => DIMENSION_ADVICE[item.key]);
   if (hit.rate < 0.5) {
-    suggestions.push("本题要点覆盖偏低，建议按“应有要点X条/已覆盖Y条”逐点补齐。");
+    suggestions.push("要点覆盖偏低，建议按“应有要点X条/已覆盖Y条”逐点补齐。");
   }
-  if (length < 60) {
-    suggestions.push("内容偏短，建议二答至少补充到 3 段并加入 1 个具体案例。");
+  if (length < 80) {
+    suggestions.push("内容偏短，建议补充场景细节与落地动作。");
   }
 
   const modeInfo = getSecondModeByValue(focusMode);
   if (focusMode && dimensions[modeInfo.targetDimension] < 70) {
-    suggestions.unshift(`本轮“${modeInfo.label}”目标未达标，建议继续针对该维度重练一次。`);
+    suggestions.unshift(`本轮“${modeInfo.label}”目标未达标，建议继续针对该维度重练。`);
   }
-
-  const finalSuggestions = dedupe(suggestions).slice(0, 3);
-  const missingPointTemplates = buildMissingPointTemplates(
-    enrichedQuestion,
-    text,
-    hit.misses
-  );
 
   return {
     score,
@@ -875,9 +936,9 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
     focusMode: focusMode || null,
     dimensions,
     dimensionList,
-    suggestions: finalSuggestions,
+    suggestions: dedupe(suggestions).slice(0, 3),
     taskBreakdown: getTaskBreakdown(enrichedQuestion),
-    missingPointTemplates,
+    missingPointTemplates: buildMissingPointTemplates(enrichedQuestion, text, hit.misses),
     coverage: {
       shouldHave: (enrichedQuestion.keywords || []).length,
       covered: hit.hits.length,
@@ -889,9 +950,7 @@ function evaluateAnswer(question, answer, secondsUsed, totalSeconds, focusMode) 
       missingKeywords: hit.misses.slice(0, 3)
     },
     questionType: enrichedQuestion.questionType,
-    localMaterialTips:
-      LOCAL_MATERIAL_LIBRARY[enrichedQuestion.questionType] ||
-      LOCAL_MATERIAL_LIBRARY.通用
+    localMaterialTips: getLocalMaterialTips(enrichedQuestion.questionType, enrichedQuestion.role)
   };
 }
 
@@ -899,10 +958,10 @@ function generateFollowUp(question, answerEval) {
   const enrichedQuestion = enrichQuestion(question);
   const followUps = enrichedQuestion.followUps || [];
   if (followUps.length === 0) {
-    return "请结合一个真实项目，再展开说明你的思路与结果。";
+    return "请结合一个真实场景，补充你的行动步骤与结果。";
   }
 
-  if ((answerEval.length || 0) < 40) {
+  if ((answerEval.length || 0) < 80) {
     return followUps[0];
   }
 
@@ -911,7 +970,7 @@ function generateFollowUp(question, answerEval) {
   }
 
   if (answerEval.dimensions && answerEval.dimensions.structure < 65) {
-    return "请你按“结论-分析-行动-复盘”四段重述一次，突出逻辑顺序。";
+    return "请按“表态-分析-对策-落地”四段重答一次，突出层次。";
   }
 
   return followUps[Math.min(2, followUps.length - 1)];
@@ -941,12 +1000,8 @@ function buildSummary(session) {
   );
   const average = records.length > 0 ? Math.round(totalScore / records.length) : 0;
 
-  const totalProgress = records.reduce(
-    (acc, item) => acc + Number(item.progressValue || 0),
-    0
-  );
-  const progressScore =
-    records.length > 0 ? Math.round(totalProgress / records.length) : 0;
+  const totalProgress = records.reduce((acc, item) => acc + Number(item.progressValue || 0), 0);
+  const progressScore = records.length > 0 ? Math.round(totalProgress / records.length) : 0;
 
   const dimensionTotals = {
     topic: 0,
@@ -976,10 +1031,7 @@ function buildSummary(session) {
   const dimensionRadar = DIMENSION_META.map((item) => ({
     key: item.key,
     label: item.label,
-    value:
-      dimensionSamples > 0
-        ? Math.round(dimensionTotals[item.key] / dimensionSamples)
-        : 0
+    value: dimensionSamples > 0 ? Math.round(dimensionTotals[item.key] / dimensionSamples) : 0
   }));
 
   let levelTag = "待提升";
@@ -996,9 +1048,7 @@ function buildSummary(session) {
     const second = r.secondAttempt ? r.secondAttempt.evaluation : null;
     const first = r.firstAttempt ? r.firstAttempt.evaluation : null;
     const selected = second || first;
-    (selected && selected.suggestions ? selected.suggestions : []).forEach((s) =>
-      allSuggestions.push(s)
-    );
+    (selected && selected.suggestions ? selected.suggestions : []).forEach((s) => allSuggestions.push(s));
   });
 
   const suggestionCount = {};

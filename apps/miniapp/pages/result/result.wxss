@@ -1,27 +1,62 @@
+.result-hero {
+  border-color: #fdba74;
+}
+
+.score-wrap {
+  min-width: 130rpx;
+  text-align: center;
+}
+
+.score-label {
+  margin-top: -10rpx;
+  color: #9a3412;
+  font-size: 22rpx;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 10rpx;
+  margin-top: 16rpx;
+}
+
+.metric-item {
+  flex: 1;
+  background: #ffffff;
+  border: 1rpx solid #fdba74;
+  border-radius: 14rpx;
+  padding: 10rpx;
+  text-align: center;
+  color: #9a3412;
+  font-size: 24rpx;
+}
+
 .tab-row {
   display: flex;
-  gap: 12rpx;
-  margin-bottom: 18rpx;
+  gap: 10rpx;
+  margin-bottom: 14rpx;
 }
 
 .tab-btn {
   flex: 1;
   text-align: center;
   padding: 14rpx 10rpx;
-  border-radius: 12rpx;
-  background: #e2e8f0;
-  color: #334155;
+  border-radius: 14rpx;
+  border: 1rpx solid #fed7aa;
+  background: #fffaf5;
+  color: #9a3412;
+  font-weight: 600;
 }
 
 .tab-btn.active {
-  background: #0f766e;
+  border-color: #ea580c;
+  background: linear-gradient(135deg, #fb923c, #ea580c);
   color: #ffffff;
 }
 
 .tip-item {
   line-height: 1.8;
-  color: #1e293b;
-  margin-top: 6rpx;
+  color: #475569;
+  margin-top: 8rpx;
 }
 
 .radar-row {
@@ -29,42 +64,54 @@
 }
 
 .radar-label {
-  color: #334155;
-  margin-bottom: 6rpx;
+  color: #7c2d12;
+  font-weight: 600;
+}
+
+.radar-score {
+  color: #c2410c;
+  font-weight: 700;
+  font-size: 24rpx;
 }
 
 .bar-bg {
+  margin-top: 8rpx;
   height: 16rpx;
-  background: #e2e8f0;
+  background: #fed7aa;
   border-radius: 999rpx;
   overflow: hidden;
 }
 
 .bar-value {
   height: 100%;
-  background: linear-gradient(90deg, #14b8a6, #0f766e);
+  background: linear-gradient(90deg, #fb923c, #ea580c);
+}
+
+.detail-card {
+  border-color: #ffe3c2;
 }
 
 .record-title {
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.7;
+  color: #7c2d12;
 }
 
 .record-meta {
   margin-top: 8rpx;
-  color: #0f766e;
+  color: #475569;
 }
 
 .sub-title {
   margin-top: 12rpx;
   margin-bottom: 6rpx;
-  font-weight: 600;
-  color: #0f172a;
+  font-weight: 700;
+  color: #9a3412;
 }
 
 .record-line {
   line-height: 1.7;
-  color: #334155;
+  color: #475569;
   margin-top: 4rpx;
 }
 
@@ -74,9 +121,10 @@
 
 .record-answer {
   margin-top: 8rpx;
-  background: #f8fafc;
+  background: #fffaf5;
+  border: 1rpx solid #fed7aa;
   border-radius: 12rpx;
   padding: 12rpx;
   line-height: 1.7;
-  color: #334155;
+  color: #475569;
 }

@@ -6,11 +6,11 @@
     "pages/history/history"
   ],
   "window": {
-    "navigationBarTitleText": "模拟面试 MVP",
-    "navigationBarBackgroundColor": "#0f172a",
+    "navigationBarTitleText": "公务员面试模拟",
+    "navigationBarBackgroundColor": "#ea580c",
     "navigationBarTextStyle": "white",
     "backgroundTextStyle": "light",
-    "backgroundColor": "#f8fafc"
+    "backgroundColor": "#fffaf4"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

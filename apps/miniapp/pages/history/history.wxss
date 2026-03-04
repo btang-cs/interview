@@ -1,21 +1,29 @@
+.history-head {
+  border-color: #fdba74;
+}
+
+.history-card {
+  border-left: 8rpx solid #fb923c;
+}
+
 .record-role {
-  font-weight: 600;
-  color: #0f172a;
+  font-weight: 700;
+  color: #7c2d12;
 }
 
 .record-time {
   margin-top: 8rpx;
-  color: #64748b;
+  color: #78716c;
   font-size: 24rpx;
 }
 
 .record-score {
-  color: #0f766e;
-  font-size: 52rpx;
+  color: #ea580c;
+  font-size: 54rpx;
   font-weight: 700;
 }
 
 .record-level {
   margin-top: 12rpx;
-  color: #334155;
+  color: #475569;
 }
