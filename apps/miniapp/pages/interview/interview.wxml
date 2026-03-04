@@ -1,0 +1,79 @@
+<view class="container">
+  <view class="card">
+    <view class="inline-row">
+      <view class="tag">{{roleLabel}} · {{levelLabel}}</view>
+      <view class="timer">剩余 {{remainingSeconds}}s</view>
+    </view>
+    <view class="progress">第 {{currentIndex + 1}} / {{questionCount}} 题 · 当前{{phaseLabel}}</view>
+  </view>
+
+  <view class="card">
+    <view class="question-title">题目（{{currentQuestion.questionType || '通用'}}）</view>
+    <view class="question-text">{{currentQuestion.prompt}}</view>
+  </view>
+
+  <view class="card" wx:if="{{phase === 'first'}}">
+    <view class="question-title">一答（先给出你的原始回答）</view>
+    <textarea
+      class="answer-input"
+      placeholder="建议至少 80 字：结论 + 要点 + 可执行动作"
+      value="{{answer}}"
+      maxlength="1600"
+      bindinput="onAnswerInput"
+    />
+    <button class="btn-primary" bindtap="submitCurrent" loading="{{isSubmitting}}">
+      提交一答并查看反馈
+    </button>
+  </view>
+
+  <view wx:if="{{phase === 'second'}}">
+    <view class="card">
+      <view class="question-title">一答反馈（可解释）</view>
+      <view class="feedback-score">一答得分：{{firstFeedback.score}}</view>
+      <view class="feedback-line">{{firstFeedback.coverageText}}</view>
+      <view class="feedback-line" wx:for="{{firstFeedback.taskBreakdown}}" wx:key="*this">- {{item}}</view>
+
+      <view class="sub-title">最该先改</view>
+      <view class="feedback-line" wx:for="{{firstFeedback.suggestions}}" wx:key="*this">• {{item}}</view>
+
+      <view class="sub-title" wx:if="{{firstFeedback.offTopicSentences.length > 0}}">疑似跑题句</view>
+      <view class="feedback-line warning" wx:for="{{firstFeedback.offTopicSentences}}" wx:key="*this">“{{item}}”</view>
+
+      <view class="sub-title">缺失要点补充模板</view>
+      <view class="feedback-line" wx:for="{{firstFeedback.missingPointTemplates}}" wx:key="point">
+        - {{item.point}}：{{item.template}}
+      </view>
+
+      <view class="sub-title">追问提示</view>
+      <view class="feedback-line">{{firstFeedback.followUp}}</view>
+    </view>
+
+    <view class="card">
+      <view class="question-title">二答训练模式（三选一）</view>
+      <view class="mode-row">
+        <view
+          wx:for="{{secondModeOptions}}"
+          wx:key="value"
+          class="mode-btn {{selectedSecondMode === item.value ? 'active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onSelectSecondMode"
+        >
+          {{item.label}}
+        </view>
+      </view>
+      <view class="mode-tip">{{secondModeTip}}</view>
+
+      <textarea
+        class="answer-input"
+        placeholder="根据上方反馈完成二答（建议 100 字以上）"
+        value="{{answer}}"
+        maxlength="1800"
+        bindinput="onAnswerInput"
+      />
+
+      <button class="btn-primary" bindtap="submitCurrent" loading="{{isSubmitting}}">
+        提交二答并进入下一题
+      </button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="card">
+    <view class="title">模拟面试 MVP</view>
+    <view class="subtitle">基于需求文档改造：日常模式固定 2 题，每题完成一答 + 二答。</view>
+  </view>
+
+  <view class="card">
+    <view class="label">目标岗位</view>
+    <picker mode="selector" range="{{roleLabels}}" value="{{roleIndex}}" bindchange="onRoleChange">
+      <view class="picker-value">{{roleLabels[roleIndex]}}</view>
+    </picker>
+
+    <view class="label field-gap">难度等级</view>
+    <picker mode="selector" range="{{levelLabels}}" value="{{levelIndex}}" bindchange="onLevelChange">
+      <view class="picker-value">{{levelLabels[levelIndex]}}</view>
+    </picker>
+
+    <view class="training-note">
+      <view class="training-note-title">今日训练配置</view>
+      <view class="training-note-item">- 每日 2 题（固定）</view>
+      <view class="training-note-item">- 每题先一答，再根据反馈完成二答</view>
+      <view class="training-note-item">- 报告输出最该改3点 + 6维雷达 + 二答进步值</view>
+    </view>
+
+    <button class="btn-primary" bindtap="startInterview">开始模拟</button>
+    <button class="btn-secondary" bindtap="toHistory">查看历史记录</button>
+  </view>
+</view>

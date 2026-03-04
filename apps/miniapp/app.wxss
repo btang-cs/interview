@@ -1,0 +1,80 @@
+page {
+  background: #f8fafc;
+  color: #0f172a;
+  font-size: 28rpx;
+}
+
+.container {
+  padding: 28rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 30rpx rgba(15, 23, 42, 0.06);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #475569;
+  margin-top: 12rpx;
+  line-height: 1.6;
+}
+
+.label {
+  color: #334155;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.value {
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background: #0f766e;
+  color: #ffffff;
+  border-radius: 14rpx;
+  margin-top: 20rpx;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #0f172a;
+  border-radius: 14rpx;
+  margin-top: 12rpx;
+}
+
+.inline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.tag {
+  background: #ecfeff;
+  color: #0f766e;
+  border-radius: 999rpx;
+  padding: 6rpx 18rpx;
+  font-size: 24rpx;
+}
+
+.score-big {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #0f766e;
+}
+
+.empty {
+  text-align: center;
+  color: #64748b;
+  padding: 80rpx 20rpx;
+}

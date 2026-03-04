@@ -1,0 +1,28 @@
+.picker-value {
+  background: #f1f5f9;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  color: #0f172a;
+}
+
+.field-gap {
+  margin-top: 22rpx;
+}
+
+.training-note {
+  margin-top: 24rpx;
+  background: #ecfeff;
+  border-radius: 12rpx;
+  padding: 16rpx 18rpx;
+}
+
+.training-note-title {
+  color: #0f766e;
+  font-weight: 700;
+}
+
+.training-note-item {
+  margin-top: 8rpx;
+  color: #334155;
+  line-height: 1.6;
+}

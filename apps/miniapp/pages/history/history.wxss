@@ -1,0 +1,21 @@
+.record-role {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.record-time {
+  margin-top: 8rpx;
+  color: #64748b;
+  font-size: 24rpx;
+}
+
+.record-score {
+  color: #0f766e;
+  font-size: 52rpx;
+  font-weight: 700;
+}
+
+.record-level {
+  margin-top: 12rpx;
+  color: #334155;
+}

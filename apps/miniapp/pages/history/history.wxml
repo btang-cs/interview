@@ -1,0 +1,18 @@
+<view class="container">
+  <view wx:if="{{history.length === 0}}" class="empty">暂无历史记录，先开始一次模拟面试。</view>
+
+  <view wx:else>
+    <view class="card" wx:for="{{history}}" wx:key="id" bindtap="openResult" data-id="{{item.id}}">
+      <view class="inline-row">
+        <view>
+          <view class="record-role">{{item.roleLabel}} · {{item.levelLabel}}</view>
+          <view class="record-time">{{item.createdAtText}}</view>
+        </view>
+        <view class="record-score">{{item.averageScore}}</view>
+      </view>
+      <view class="record-level">{{item.levelTag}}｜{{item.questionCount}} 题｜二答进步 {{item.progressScore || 0}}</view>
+    </view>
+
+    <button class="btn-secondary" bindtap="clearHistory">清空历史记录</button>
+  </view>
+</view>

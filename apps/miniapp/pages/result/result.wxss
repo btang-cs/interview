@@ -1,0 +1,82 @@
+.tab-row {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 18rpx;
+}
+
+.tab-btn {
+  flex: 1;
+  text-align: center;
+  padding: 14rpx 10rpx;
+  border-radius: 12rpx;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.tab-btn.active {
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.tip-item {
+  line-height: 1.8;
+  color: #1e293b;
+  margin-top: 6rpx;
+}
+
+.radar-row {
+  margin-top: 14rpx;
+}
+
+.radar-label {
+  color: #334155;
+  margin-bottom: 6rpx;
+}
+
+.bar-bg {
+  height: 16rpx;
+  background: #e2e8f0;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+
+.bar-value {
+  height: 100%;
+  background: linear-gradient(90deg, #14b8a6, #0f766e);
+}
+
+.record-title {
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.record-meta {
+  margin-top: 8rpx;
+  color: #0f766e;
+}
+
+.sub-title {
+  margin-top: 12rpx;
+  margin-bottom: 6rpx;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.record-line {
+  line-height: 1.7;
+  color: #334155;
+  margin-top: 4rpx;
+}
+
+.warning {
+  color: #b91c1c;
+}
+
+.record-answer {
+  margin-top: 8rpx;
+  background: #f8fafc;
+  border-radius: 12rpx;
+  padding: 12rpx;
+  line-height: 1.7;
+  color: #334155;
+}
