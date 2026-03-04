@@ -40,11 +40,17 @@
 
 1. 打开微信开发者工具。
 2. 选择“导入项目”。
-3. 项目目录选择：
-   - `/Users/tangbin/SynologyDrive/MacBook-M1-Max/Codex-Project/interview`
+3. 项目目录选择：当前仓库根目录（即本项目文件夹）。
 4. AppID 可使用 `touristappid`（体验版调试）。
 5. 导入后直接点击“编译”。
 6. 进入首页后，选择岗位/难度并开始模拟面试。
+
+## 隐私与安全提交规则
+
+- 不提交任何本机绝对路径（例如包含本机用户名目录的路径）。
+- 不提交任何 API Key、Token、密码、私钥文件。
+- 不提交个人敏感文档（Office 文档默认被 `.gitignore` 屏蔽）。
+- 提交前建议启用本仓库 Hook：`git config core.hooksPath .githooks`
 
 ## 可选：开启真 AI 评分
 

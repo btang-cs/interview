@@ -4,3 +4,32 @@ node_modules/
 dist/
 build/
 需求文档/
+
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+*.cer
+*.crt
+*.der
+
+# Personal/private materials
+private/
+secrets/
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Local editor settings
+.vscode/
+.idea/
